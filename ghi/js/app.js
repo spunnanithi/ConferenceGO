@@ -14,6 +14,14 @@ function createCard(name, description, pictureUrl, created_date, end_date, locat
     `;
 }
 
+function errorHandling() {
+    return `
+    <div class=" alert alert-danger" role="alert">
+        Cannot fetch or process any data!
+    </div>
+    `;
+}
+
 // Since we are using 'await' keyword, we need to write 'async' keyword next to function declaration
 window.addEventListener('DOMContentLoaded', async () => {
 
@@ -26,7 +34,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) {
 
             // Figure out what to do when the response is bad
-            console.log("The response is bad.");
+            errorHandling();
 
         } else {
 
@@ -41,7 +49,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
                 if (detailResponse.ok) {
                     const details = await detailResponse.json();
-                    console.log(details)
                     const title = details.conference.name;
                     const description = details.conference.description;
                     const pictureUrl = details.conference.location.picture_url;
@@ -72,6 +79,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {
 
         // Figure out what to do if an error is raised
+        errorHandling();
         console.error(e);
 
     }

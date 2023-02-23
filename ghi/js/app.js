@@ -54,10 +54,10 @@ window.addEventListener('DOMContentLoaded', async () => {
                     const pictureUrl = details.conference.location.picture_url;
 
                     let created_date = new Date(details.conference.created);
-                    created_date = created_date.toDateString();
+                    created_date = created_date.toDateString().substring(4);
 
                     let end_date = new Date(details.conference.ends);
-                    end_date = end_date.toDateString();
+                    end_date = end_date.toDateString().substring(4);
 
                     const location = details.conference.location.name;
 

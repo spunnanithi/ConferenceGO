@@ -1,13 +1,14 @@
 // Add EventListener for when the DOM loads
 window.addEventListener('DOMContentLoaded', async () => {
 
-// Declare a variable that will hold URL for API listing states by name
+// State Fetching Section
+    // Declare a variable that will hold URL for API listing states by name
     const statesUrl = 'http://localhost:8000/api/states/';
 
-// Fetch the URL above, include await keyword
+    // Fetch the URL above, include await keyword
     const response = await fetch(statesUrl);
 
-// If response is ok, get data using .json method, include await keyword
+    // If response is ok, get data using .json method, include await keyword
     if (response.ok) {
         const data = await response.json();
         // console.log("data", data);
@@ -30,4 +31,33 @@ window.addEventListener('DOMContentLoaded', async () => {
             stateTag.appendChild(optionTag);
         }
     }
+
+// Location Form Submission Section
+    // Get form tag by 'create-location-form' id
+    const form = document.getElementById('create-location-form');
+    form.addEventListener('submit', async (event) => {
+        // Prevent default behavior of sending data to server after pressing button
+        event.preventDefault();
+
+        // Obtain form data and convert to JSON
+        const formData = new FormData(form);
+        const dataObject = Object.fromEntries(formData);
+        const json = JSON.stringify(dataObject);
+
+        // Send form data to server
+        const locationUrl = 'http://localhost:8000/api/locations/';
+        const fetchConfig = {
+            method: 'POST',
+            body: json,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+        const response = await fetch(locationUrl, fetchConfig);
+        if (response.ok) {
+            form.reset(); // Reset form to original state after submission
+            const newLocation = await response.json();
+        }
+    })
+
 })

@@ -34,7 +34,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) {
 
             // Figure out what to do when the response is bad
-            errorHandling();
+            const containerTag = document.querySelector('.container');
+            const html = errorHandling();
+            containerTag.innerHTML += html;
 
         } else {
 
@@ -54,10 +56,10 @@ window.addEventListener('DOMContentLoaded', async () => {
                     const pictureUrl = details.conference.location.picture_url;
 
                     let created_date = new Date(details.conference.created);
-                    created_date = created_date.toDateString().substring(4);
+                    created_date = created_date.toLocaleDateString();
 
                     let end_date = new Date(details.conference.ends);
-                    end_date = end_date.toDateString().substring(4);
+                    end_date = end_date.toLocaleDateString();
 
                     const location = details.conference.location.name;
 

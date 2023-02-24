@@ -1,40 +1,39 @@
 // Add EventListener for when the DOM loads
 window.addEventListener('DOMContentLoaded', async () => {
 
-// State Fetching Section
+// Location Fetching Section
     // Declare a variable that will hold URL for API listing states by name
-    const statesUrl = 'http://localhost:8000/api/states/';
+    const locationUrl = 'http://localhost:8000/api/locations/';
 
     // Fetch the URL above, include await keyword
-    const response = await fetch(statesUrl);
+    const response = await fetch(locationUrl);
 
     // If response is ok, get data using .json method, include await keyword
     if (response.ok) {
         const data = await response.json();
-        // console.log("data", data);
 
-        // Get the select tag element by its id 'state'
-        const stateTag = document.getElementById('state');
+        // Get the select tag element by its id 'location'
+        const locationTag = document.getElementById('location');
 
         // For each state in the states property of the data
-        for (let state of data.states) {
+        for (let location of data.locations) {
             // Create an 'option' element
             const optionTag = document.createElement('option');
 
-            // Set the '.value' property of the option element to the state's abbreviation
-            optionTag.value = Object.values(state);
+            // Set the '.value' property of the option element to the location's id
+            optionTag.value = location.id;
 
-            // Set the '.innerHTML' property of the option element to the state's name
-            optionTag.innerHTML = Object.keys(state);
+            // Set the '.innerHTML' property of the option element to the location's name
+            optionTag.innerHTML = location.name;
 
             // Append the option element as a child of the select tag
-            stateTag.appendChild(optionTag);
+            locationTag.appendChild(optionTag);
         }
     }
 
-// Location Form Submission Section
-    // Get form tag by 'create-location-form' id
-    const form = document.getElementById('create-location-form');
+// Location Submission Form Section
+    // Get form tag by selecting id of 'create-new-conference'
+    const form = document.getElementById('create-conference-form');
 
     // Add EventListener for whenever user submits a form
     form.addEventListener('submit', async (event) => {
@@ -45,25 +44,26 @@ window.addEventListener('DOMContentLoaded', async () => {
         const formData = new FormData(form);
         const dataObject = Object.fromEntries(formData);
         const json = JSON.stringify(dataObject);
-        console.log(json)
 
         // Send form data to server
-        const locationUrl = 'http://localhost:8000/api/locations/';
+        const conferenceUrl = 'http://localhost:8000/api/conferences/'; // URL that we are going to send 'POST' HTTP request to create new conference
+
         const fetchConfig = {
-            method: 'POST',
+            method: "POST",
             body: json,
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
         }
-        const response = await fetch(locationUrl, fetchConfig);
-        console.log(response)
+
+        const response = await fetch(conferenceUrl, fetchConfig);
 
         if (response.ok) {
-            form.reset(); // Reset form to original state after submission
-            const newLocation = await response.json();
-            // console.log(newLocation);
+            form.reset();
+            const newConference = await response.json();
+            // console.log(newConference);
         }
+
     })
 
-})
+});

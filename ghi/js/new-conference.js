@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(conferenceUrl, fetchConfig);
 
         if (response.ok) {
-            form.reset();
+            form.reset(); // Reset form to original state after submission
             const newConference = await response.json();
             // console.log(newConference);
         }

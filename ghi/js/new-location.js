@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.log(json)
 
         // Send form data to server
-        const locationUrl = 'http://localhost:8000/api/locations/';
+        const locationUrl = 'http://localhost:8000/api/locations/'; // URL that we are going to send 'POST' HTTP request to create new conference
         const fetchConfig = {
             method: 'POST',
             body: json,

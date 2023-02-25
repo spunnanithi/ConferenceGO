@@ -11,6 +11,7 @@
 			crossorigin="anonymous" />
 		<title>Conference GO!</title>
 		<script type="module" src="./js/app.js"></script>
+		<script type="module" src="./js/checkStatus.js"></script>
 	</head>
 	<body>
 		<header>
@@ -32,12 +33,12 @@
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="#">Home</a>
 							</li>
-							<li class="nav-item d-none">
+							<li class="nav-item d-none" id="location-link">
 								<a class="nav-link" aria-current="page" href="new-location.html"
 									>New Location</a
 								>
 							</li>
-							<li class="nav-item d-none">
+							<li class="nav-item d-none" id="conference-link">
 								<a
 									class="nav-link"
 									aria-current="page"
@@ -45,7 +46,7 @@
 									>New Conference</a
 								>
 							</li>
-							<li class="nav-item d-none">
+							<li class="nav-item d-none" id="presentation-link">
 								<a
 									class="nav-link"
 									aria-current="page"

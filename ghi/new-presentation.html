@@ -11,6 +11,7 @@
 			crossorigin="anonymous" />
 		<title>New Presentation :: Conference GO!</title>
 		<script type="module" src="js/new-presentation.js"></script>
+		<script type="module" src="./js/checkStatus.js"></script>
 	</head>
 	<body>
 		<header>
@@ -32,25 +33,22 @@
 							<li class="nav-item">
 								<a class="nav-link" aria-current="page" href="/">Home</a>
 							</li>
-							<li class="nav-item">
-								<a
-									class="nav-link d-none"
-									aria-current="page"
-									href="new-location.html"
+							<li class="nav-item d-none" id="location-link">
+								<a class="nav-link" aria-current="page" href="new-location.html"
 									>New Location</a
 								>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-none" id="conference-link">
 								<a
-									class="nav-link d-none"
+									class="nav-link"
 									aria-current="page"
 									href="new-conference.html"
 									>New Conference</a
 								>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-none" id="presentation-link">
 								<a
-									class="nav-link active d-none"
+									class="nav-link active"
 									aria-current="page"
 									href="new-presentation.html"
 									>New Presentation</a

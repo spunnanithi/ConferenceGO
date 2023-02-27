@@ -21,7 +21,7 @@ if (payloadCookie) {
 	// The payload is a JSON-formatted string, so parse it
 	const payload = JSON.parse(decodedPayload);
 	// Print the payload
-	console.log(payload);
+	// console.log(payload);
 
 	// Check if "events.add_conference" is in the permissions.
 	// If it is, remove 'd-none' from the link

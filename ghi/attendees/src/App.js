@@ -9,14 +9,14 @@ function App(props) {
 			<Nav />
 
 			<div className="container">
-				<table className="table table-striped">
-					<thead>
+				<table className="table table-hover table-striped">
+					<thead className="table-dark">
 						<tr>
-							<th>Name</th>
-							<th>Conference</th>
+							<th scope="col">Name</th>
+							<th scope="col">Conference</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className="table-group-divider">
 						{props.attendees.map((attendee) => {
 							return (
 								<tr key={attendee.href}>

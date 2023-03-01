@@ -242,7 +242,7 @@ def api_list_states(request):
 
         # Create a dictionary that contains the name and
         # abbreviation for each state
-        dict = {state.name: state.abbreviation}
+        dict = {"abbreviation": state.abbreviation, "name": state.name}
 
         # Append the dictionary to the list
         state_list.append(dict)

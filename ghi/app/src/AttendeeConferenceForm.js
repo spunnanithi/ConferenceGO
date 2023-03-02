@@ -87,7 +87,7 @@ const AttendeeConferenceForm = () => {
 					<img
 						width="300"
 						className="bg-white rounded shadow d-block mx-auto mb-4"
-						src="./logo.svg"
+						src="../logo2.svg"
 					/>
 				</div>
 				<div className="col">

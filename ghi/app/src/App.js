@@ -4,6 +4,7 @@ import LocationForm from "./LocationForm";
 import ConferenceForm from "./ConferenceForm";
 import AttendeeConferenceForm from "./AttendeeConferenceForm";
 import PresentationForm from "./PresentationForm";
+import MainPage from "./MainPage";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 
 function App(props) {
@@ -13,25 +14,27 @@ function App(props) {
 	return (
 		<BrowserRouter>
 			<Nav />
-			<div className="container">
-				<Routes>
-					<Route path="conferences">
-						<Route path="new" element={<ConferenceForm />}></Route>
-					</Route>
+			<Routes>
+				<Route index element={<MainPage />}></Route>
+				<Route path="conferences">
+					<Route path="new" element={<ConferenceForm />}></Route>
+				</Route>
+				{/* <Route
+					path="attendees/new"
+					element={<AttendeeConferenceForm />}></Route> */}
+				<Route path="locations">
+					<Route path="new" element={<LocationForm />}></Route>
+				</Route>
+				<Route path="attendees">
 					<Route
-						path="attendees/new"
-						element={<AttendeeConferenceForm />}></Route>
-					<Route path="locations">
-						<Route path="new" element={<LocationForm />}></Route>
-					</Route>
-					<Route
-						path="attendees"
+						path=""
 						element={<AttendeesList attendees={props.attendees} />}></Route>
-					<Route path="presentations">
-						<Route path="new" element={<PresentationForm />}></Route>
-					</Route>
-				</Routes>
-			</div>
+					<Route path="new" element={<AttendeeConferenceForm />}></Route>
+				</Route>
+				<Route path="presentations">
+					<Route path="new" element={<PresentationForm />}></Route>
+				</Route>
+			</Routes>
 		</BrowserRouter>
 	);
 }

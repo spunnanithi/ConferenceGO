@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const PresentationForm = () => {
+const PresentationForm = (props) => {
 	const [conferences, setConferences] = useState([]);
 
 	const [presenterName, setPresenterName] = useState("");

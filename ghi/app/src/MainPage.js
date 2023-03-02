@@ -7,6 +7,7 @@ function ConferenceColumn(props) {
 		<div className="col">
 			{props.list.map((data) => {
 				const conference = data.conference;
+				const weather = data.weather;
 				return (
 					<div key={conference.href} className="card mb-3 shadow">
 						<img
@@ -23,6 +24,8 @@ function ConferenceColumn(props) {
 						<div className="card-footer">
 							{new Date(conference.starts).toLocaleDateString()}-
 							{new Date(conference.ends).toLocaleDateString()}
+							<br></br>
+							{weather.description}, {weather.temp}°F
 						</div>
 					</div>
 				);
